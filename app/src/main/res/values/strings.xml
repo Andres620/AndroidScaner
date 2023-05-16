@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">AndroidScanner</string>
+    <string name="ID">ID</string>
+    <string name="First_Name">First Name</string>
+    <string name="Other_Names">Other Names</string>
+    <string name="First_Family_Name">First Family Name</string>
+    <string name="Second_Family_Name">Second Family Name</string>
+    <string name="Date_Birth">Date Of Birth</string>
+    <string name="Gender">Gender</string>
+    <string name="Scan">Scan</string>
 </resources>
