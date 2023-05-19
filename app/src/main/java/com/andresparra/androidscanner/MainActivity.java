@@ -39,6 +39,7 @@ import com.google.mlkit.vision.common.InputImage;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -143,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
         BarcodeScannerOptions options =
                 new BarcodeScannerOptions.Builder()
                         .setBarcodeFormats(
-                                Barcode.FORMAT_QR_CODE,
+                                Barcode.FORMAT_PDF417,
                                 Barcode.FORMAT_AZTEC)
                         .build();
         BarcodeScanner scanner = BarcodeScanning.getClient(options);
@@ -182,6 +183,9 @@ public class MainActivity extends AppCompatActivity {
             int valueType = barcode.getValueType();
             // See API reference for complete list of supported types
             switch (valueType) {
+                case Barcode.TYPE_TEXT:
+                    byte [] bytes = barcode.getRawBytes();
+                    String text = new String(bytes, StandardCharsets.ISO_8859_1);
                 case Barcode.TYPE_WIFI:
                     String ssid = barcode.getWifi().getSsid();
                     String password = barcode.getWifi().getPassword();
